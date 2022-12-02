@@ -24,7 +24,10 @@ class DataPickerDialog: DialogFragment() {
             .build()
             .apply {
                 addOnPositiveButtonClickListener { result ->
-                    setFragmentResult(DATA_PICKER_DIALOG_RESULT_KEY, bundleOf(DATA_PICKER_DIALOG_RESULT_VALUE to result))
+                    setFragmentResult(
+                        DATA_PICKER_DIALOG_RESULT_KEY,
+                        bundleOf(DATA_PICKER_DIALOG_RESULT_VALUE to result)
+                    )
                     this@DataPickerDialog.dismiss()
                 }
                 addOnNegativeButtonClickListener {
@@ -33,7 +36,7 @@ class DataPickerDialog: DialogFragment() {
                 addOnDismissListener {
                     this@DataPickerDialog.dismiss()
                 }
-            }.show(childFragmentManager, TAG)
+            }.show(parentFragmentManager, TAG)
     }
 
     companion object {

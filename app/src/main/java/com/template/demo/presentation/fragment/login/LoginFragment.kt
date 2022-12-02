@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.template.basecomponents.delegates.viewBinding
+import com.template.basecomponents.utils.allTruth
 import com.template.basecomponents.view.isEditTextValid
 import com.template.demo.R
 import com.template.demo.databinding.FmtLoginBinding
@@ -44,13 +45,11 @@ class LoginFragment: BaseFragment(R.layout.fmt_login) {
         with(binding) {
 
             /* Check that all data were inputted correctly. */
-            val isDataValid =
-                loginEmailLayout.isEditTextValid(R.string.error_input_text_base) && loginPasswordLayout.isEditTextValid(
-                    R.string.error_input_text_base
-                )
-
-            /* If data are not correct, then stop login process. */
-            if (!isDataValid) return
+            allTruth(loginEmailLayout.isEditTextValid(R.string.error_input_text_base), loginPasswordLayout.isEditTextValid(
+                R.string.error_input_text_base
+            )) { isTruth ->
+                if (!isTruth) return@with
+            }
 
             /* Otherwise try to login user. */
             viewModel.tryLoginUser(

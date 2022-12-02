@@ -67,9 +67,9 @@ class ViewInputEditText @JvmOverloads constructor(context: Context, attrs: Attri
 fun ViewInputEditText.isEditTextValid(
     @StringRes messageError: Int?,
 ): Boolean {
-    val isNotValid = text.isEmpty()
-    if (isNotValid) showOrHideError(messageError) else showOrHideError(null)
-    return isNotValid
+    val isValid = text.isNotEmpty()
+    if (isValid) showOrHideError(null) else showOrHideError(messageError)
+    return isValid
 }
 
 /**
@@ -79,7 +79,7 @@ fun ViewInputEditText.isEquals(
     secondEditText: ViewInputEditText,
     @StringRes messageError: Int?,
 ): Boolean {
-    val isNotSame = text.trim() != secondEditText.text.trim()
-    if (isNotSame) showOrHideError(messageError) else showOrHideError(null)
-    return !isNotSame
+    val isSame = text.trim() == secondEditText.text.trim()
+    if (isSame) showOrHideError(null) else showOrHideError(messageError)
+    return isSame
 }

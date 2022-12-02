@@ -2,13 +2,19 @@ package com.template.demo.presentation.fragment.signup
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.template.basecomponents.delegates.viewBinding
+import com.template.basecomponents.utils.allTruth
 import com.template.basecomponents.view.isEditTextValid
 import com.template.basecomponents.view.isEquals
 import com.template.demo.R
 import com.template.demo.databinding.FmtSignupBinding
+import com.template.demo.presentation.dialog.DataPickerDialog
+import com.template.demo.presentation.dialog.DataPickerDialog.Companion.DATA_PICKER_DIALOG_RESULT_KEY
+import com.template.demo.presentation.dialog.DataPickerDialog.Companion.DATA_PICKER_DIALOG_RESULT_VALUE
 import com.template.demo.presentation.fragment.base.BaseFragment
+import com.template.utils.toTimeFormat
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignupFragment: BaseFragment(R.layout.fmt_signup) {
@@ -20,6 +26,7 @@ class SignupFragment: BaseFragment(R.layout.fmt_signup) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        handleFragmentResults()
         with(binding) {
 
             /* Handle select data action. */
@@ -33,6 +40,7 @@ class SignupFragment: BaseFragment(R.layout.fmt_signup) {
 
         /* Observe to live data. */
         viewModel.isUserRegistered.observe(viewLifecycleOwner, ::handleUserRegistrationResult)
+        viewModel.birthday.observe(viewLifecycleOwner, ::handleUserBirthdayChoice)
     }
 
     /**
@@ -42,27 +50,26 @@ class SignupFragment: BaseFragment(R.layout.fmt_signup) {
         with(binding) {
 
             /* Verify that all inputted data are valid. */
-            val isAllDataValid = signupEmailLayout.isEditTextValid(R.string.error_input_text_base)
-                    && signupNameLayout.isEditTextValid(R.string.error_input_text_base)
-                    && signupPasswordLayout.isEditTextValid(R.string.error_input_text_base)
-                    && signupRepeatPasswordLayout.isEditTextValid(R.string.error_input_text_base)
-
-            if (!isAllDataValid) return
+            allTruth(
+                signupEmail.isEditTextValid(R.string.error_input_text_base),
+                signupName.isEditTextValid(R.string.error_input_text_base),
+                signupPassword.isEditTextValid(R.string.error_input_text_base),
+                signupRepeatPassword.isEditTextValid(R.string.error_input_text_base)
+            ) { isTruth ->
+                if (!isTruth) return@with
+            }
 
             /* Verify that passwords are same. */
-            val isPasswordIsValid = signupPasswordLayout.isEquals(
-                signupRepeatPasswordLayout,
-                R.string.error_password_are_not_same
-            )
-
-            /* If not all data are valid, then stop registration process. */
-            if (!isPasswordIsValid) return
+            if (!signupPassword.isEquals(signupRepeatPassword, R.string.error_password_are_not_same)
+            ) {
+                return
+            }
 
             /* Otherwise try to register user. */
             viewModel.tryRegisterUser(
-                signupEmailLayout.text.trim(),
-                signupPasswordLayout.text.trim(),
-                signupNameLayout.text.trim()
+                signupEmail.text.trim(),
+                signupPassword.text.trim(),
+                signupName.text.trim()
             )
         }
     }
@@ -76,6 +83,21 @@ class SignupFragment: BaseFragment(R.layout.fmt_signup) {
             findNavController().navigate(SignupFragmentDirections.actionSignupFragmentToNavigationHome())
         } else {
             viewModel.showMessage(R.string.error_base_message)
+        }
+    }
+
+    /**
+     * Show user's selected birthday.
+     */
+    private fun handleUserBirthdayChoice(birthday: Long) {
+        binding.signupDataPicker.text = birthday.toTimeFormat()
+    }
+
+    private fun handleFragmentResults() {
+
+        /* Handle change user birthday. */
+        setFragmentResultListener(DATA_PICKER_DIALOG_RESULT_KEY) { _, bundle ->
+            viewModel.handleSelectedBirthday(bundle.getLong(DATA_PICKER_DIALOG_RESULT_VALUE))
         }
     }
 }

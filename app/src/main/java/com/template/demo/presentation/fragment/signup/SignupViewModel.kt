@@ -13,6 +13,12 @@ class SignupViewModel(
 ): BaseViewModel() {
 
     /**
+     * Selected user's birthday.
+     */
+    private val birthdayInternal: MutableLiveData<Long> = MutableLiveData()
+    val birthday: LiveData<Long> = birthdayInternal
+
+    /**
      * Follow that user is authorized in app or not.
      */
     private val isUserRegisteredInternal: MutableLiveData<Boolean?> = MutableLiveData(null)
@@ -37,5 +43,12 @@ class SignupViewModel(
                 showMessage(R.string.error_base_message)
             }
         }
+    }
+
+    /**
+     * Handle selected user's birthday.
+     */
+    fun handleSelectedBirthday(birthday: Long) {
+        birthdayInternal.value = birthday
     }
 }
