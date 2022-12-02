@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_login_fragment">
+
+    <fragment
+        android:id="@+id/navigation_home_fragment"
+        android:name="com.template.demo.presentation.fragment.home.MainFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fmt_main">
+        <action
+            android:id="@+id/action_navigation_home_to_settingsFragment"
+            app:destination="@id/navigation_settings_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_login_fragment"
+        android:name="com.template.demo.presentation.fragment.login.LoginFragment"
+        android:label="@string/title_login"
+        tools:layout="@layout/fmt_login">
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/navigation_signup_fragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_navigation_home"
+            app:destination="@id/navigation_home_fragment"
+            app:popUpTo="@id/navigation_login_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_settings_fragment"
+        android:name="com.template.demo.presentation.fragment.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fmt_setting">
+        <action
+            android:id="@+id/action_settingsFragment_to_loginFragment"
+            app:destination="@id/navigation_login_fragment"
+            app:popUpTo="@id/navigation_login_fragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_settingsFragment_to_changePasswordBottomSheetDialog"
+            app:destination="@id/navigation_change_password_bottom_sheet_dialog" />
+        <action
+            android:id="@+id/action_settingsFragment_to_confirmationDialog"
+            app:destination="@id/navigation_confirmation_dialog" />
+        <action
+            android:id="@+id/action_navigation_settings_fragment_to_changeOneTextBottomSheetDialog"
+            app:destination="@id/navigation_change_one_text_bottom_sheet_dialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_signup_fragment"
+        android:name="com.template.demo.presentation.fragment.signup.SignupFragment"
+        android:label="@string/title_signup"
+        tools:layout="@layout/fmt_signup">
+        <action
+            android:id="@+id/action_signupFragment_to_navigation_home"
+            app:destination="@id/navigation_home_fragment"
+            app:popUpTo="@id/navigation_login_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <dialog
+        android:id="@+id/navigation_confirmation_dialog"
+        android:name="com.template.demo.presentation.dialog.ConfirmationDialog"
+        android:label="ConfirmationDialog">
+
+        <argument
+            android:name="confirmTitle"
+            app:argType="integer" />
+
+        <argument
+            android:name="confirmMessage"
+            app:argType="integer" />
+
+        <argument
+            android:name="positiveButton"
+            app:argType="integer" />
+
+        <argument
+            android:name="negativeButton"
+            app:argType="integer" />
+
+    </dialog>
+    <dialog
+        android:id="@+id/navigation_change_password_bottom_sheet_dialog"
+        android:name="com.template.demo.presentation.dialog.ChangePasswordBottomSheetDialog"
+        tools:layout="@layout/dialog_edit_password" />
+    <dialog
+        android:id="@+id/navigation_change_one_text_bottom_sheet_dialog"
+        android:name="com.template.demo.presentation.dialog.ChangeOneTextBottomSheetDialog"
+        tools:layout="@layout/dialog_edit_one_text">
+
+        <argument
+            android:name="dialogTitle"
+            app:argType="integer" />
+
+        <argument
+            android:name="textHint"
+            app:argType="integer" />
+
+        <argument
+            android:name="targetText"
+            app:argType="string" />
+
+        <argument
+            android:name="identityTag"
+            app:argType="string" />
+    </dialog>
+</navigation>

@@ -1,0 +1,37 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="spacer_1">1dp</dimen>
+    <dimen name="spacer_2">2dp</dimen>
+    <dimen name="spacer_4">4dp</dimen>
+    <dimen name="spacer_8">8dp</dimen>
+    <dimen name="spacer_10">10dp</dimen>
+    <dimen name="spacer_12">12dp</dimen>
+    <dimen name="spacer_14">14dp</dimen>
+    <dimen name="spacer_16">16dp</dimen>
+    <dimen name="spacer_18">18dp</dimen>
+    <dimen name="spacer_20">20dp</dimen>
+
+    <dimen name="text_8">8sp</dimen>
+    <dimen name="text_10">10sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+
+    <dimen name="corner_no_radius">0dp</dimen>
+    <dimen name="corner_radius_4">4dp</dimen>
+    <dimen name="corner_radius_8">8dp</dimen>
+    <dimen name="corner_radius_10">10dp</dimen>
+    <dimen name="corner_radius_12">12dp</dimen>
+
+    <dimen name="editTextHeight">52dp</dimen>
+
+    <dimen name="buttonMainHeight">32dp</dimen>
+
+    <dimen name="view_error_image_size">80dp</dimen>
+
+    <dimen name="settings_item_h">42dp</dimen>
+</resources>

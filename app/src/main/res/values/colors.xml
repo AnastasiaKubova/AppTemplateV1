@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_light">#fffffb</color>
+    <color name="primary">#d7ccc8</color>
+    <color name="primary_dark">#a69b97</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray_light">#b0bec5</color>
+    <color name="gray_dark">#808e95</color>
+    <color name="red">#ff8a65</color>
+    <color name="green">#8bc34a</color>
+
+    <color name="textTitle">@color/primary_dark</color>
+    <color name="textMain">@color/black</color>
+    <color name="textError">@color/red</color>
+    <color name="textHint">@color/gray_light</color>
+    <color name="buttonBackground">@color/primary_dark</color>
+    <color name="editTextBorderBackground">@color/primary_dark</color>
+    <color name="buttonLogoutBackground">@color/red</color>
+    <color name="ripple">#eceff1</color>
+</resources>

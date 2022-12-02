@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- https://stackoverflow.com/questions/3441396/defining-custom-attrs -->
+    <declare-styleable name="viewInputEditText">
+        <attr name="android:text" />
+        <attr name="android:inputType"/>
+        <attr name="android:hint" />
+        <attr name="android:maxLength" />
+    </declare-styleable>
+</resources>

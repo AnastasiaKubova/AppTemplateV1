@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingVertical="@dimen/spacer_16">
+
+    <TextView
+        android:id="@+id/settings_main_title"
+        style="@style/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/spacer_16"
+        android:text="@string/settings_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/settings_name"
+        style="@style/mainText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_item_h"
+        android:layout_marginTop="@dimen/spacer_8"
+        android:background="?attr/selectableItemBackground"
+        android:drawableEnd="@drawable/ic_arrow_right_24"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/spacer_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_main_title"
+        tools:text="Ivan Ivanov" />
+
+    <TextView
+        android:id="@+id/settings_email"
+        style="@style/mainText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_item_h"
+        android:layout_marginTop="@dimen/spacer_4"
+        android:background="?attr/selectableItemBackground"
+        android:drawableEnd="@drawable/ic_arrow_right_24"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/spacer_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_name"
+        tools:text="test@gmail.com" />
+
+    <TextView
+        android:id="@+id/settings_password"
+        style="@style/mainText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_item_h"
+        android:layout_marginTop="@dimen/spacer_4"
+        android:background="?attr/selectableItemBackground"
+        android:drawableEnd="@drawable/ic_arrow_right_24"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/spacer_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_email"
+        tools:text="*********" />
+
+    <TextView
+        android:id="@+id/settings_other_title"
+        style="@style/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacer_20"
+        android:paddingHorizontal="@dimen/spacer_16"
+        android:text="@string/settings_other"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_password" />
+
+    <RadioGroup
+        android:id="@+id/settings_theme_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacer_8"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/spacer_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_other_title">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/settings_theme_default_radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/settings_theme_default" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/settings_theme_light_radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_theme_light" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/settings_theme_dark_radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/settings_theme_dark" />
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/settings_exit_button"
+        style="@style/logoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_16"
+        android:layout_marginHorizontal="@dimen/spacer_16"
+        android:text="@string/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_theme_group"
+        app:layout_constraintVertical_bias="1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
