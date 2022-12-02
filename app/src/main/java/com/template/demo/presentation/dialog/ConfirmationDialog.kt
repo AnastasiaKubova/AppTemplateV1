@@ -2,6 +2,7 @@ package com.template.demo.presentation.dialog
 
 import android.app.Dialog
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
@@ -36,7 +37,6 @@ class ConfirmationDialog: DialogFragment() {
     }
 
     companion object {
-        const val TAG = "TagConfirmationDialog"
         const val CONFIRM_DIALOG_RESULT_KEY = "CONFIRM_DIALOG_RESULT_KEY"
         const val CONFIRM_DIALOG_RESULT_VALUE = "CONFIRM_DIALOG_RESULT_VALUE"
         const val CONFIRM_DIALOG_RESULT_POSITIVE_RESULT = "CONFIRM_DIALOG_RESULT_POSITIVE_RESULT"

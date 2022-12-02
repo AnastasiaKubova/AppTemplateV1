@@ -35,9 +35,9 @@ class UserInteractorImpl(
         userRepository.loadUserData(email, password)
     }
 
-    override suspend fun updateUserData(newEmail: String?, newPassword: String?, newName: String?) = withContext(Dispatchers.IO) {
+    override suspend fun updateUserData(newEmail: String?, newPassword: String?, newName: String?,  birthday: Long?) = withContext(Dispatchers.IO) {
         val (email, password) = preferenceRepository.getUserData()
-        userRepository.updateUserData(email, password, newEmail, newPassword, newName)
+        userRepository.updateUserData(email, password, newEmail, newPassword, newName, birthday)
     }
 
     override fun clearData() {

@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_navigation_settings_fragment_to_changeOneTextBottomSheetDialog"
             app:destination="@id/navigation_change_one_text_bottom_sheet_dialog" />
+        <action
+            android:id="@+id/action_navigation_settings_fragment_to_data_picker_dialog"
+            app:destination="@id/data_picker_dialog" />
     </fragment>
     <fragment
         android:id="@+id/navigation_signup_fragment"
@@ -58,6 +61,9 @@
             app:destination="@id/navigation_home_fragment"
             app:popUpTo="@id/navigation_login_fragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_signup_fragment_to_data_picker_dialog"
+            app:destination="@id/data_picker_dialog" />
     </fragment>
     <dialog
         android:id="@+id/navigation_confirmation_dialog"
@@ -105,5 +111,21 @@
         <argument
             android:name="identityTag"
             app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/data_picker_dialog"
+        android:name="com.template.demo.presentation.dialog.DataPickerDialog"
+        android:label="DataPickerDialog">
+
+        <argument
+            android:name="dialogTitle"
+            app:argType="integer" />
+
+        <argument
+            android:name="targetDate"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="java.lang.Long" />
+
     </dialog>
 </navigation>

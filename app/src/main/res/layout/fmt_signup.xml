@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/spacer_16">
+    android:paddingVertical="@dimen/spacer_16">
 
     <com.template.basecomponents.view.ViewInputEditText
         android:id="@+id/signup_email_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacer_16"
         android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,27 +19,45 @@
         android:id="@+id/signup_name_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacer_16"
         android:layout_marginTop="@dimen/spacer_8"
         android:hint="@string/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_email_layout" />
 
-    <com.template.basecomponents.view.ViewInputEditText
-        android:id="@+id/signup_password_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/signup_data_picker"
+        style="@style/secondaryText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_with_left_row_item_h"
         android:layout_marginTop="@dimen/spacer_8"
-        android:hint="@string/password"
-        android:inputType="textPassword"
+        android:background="?attr/selectableItemBackground"
+        android:drawableEnd="@drawable/ic_arrow_right_24"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/spacer_16"
+        android:text="@string/birthday"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_name_layout" />
 
     <com.template.basecomponents.view.ViewInputEditText
+        android:id="@+id/signup_password_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacer_16"
+        android:layout_marginTop="@dimen/spacer_8"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_data_picker" />
+
+    <com.template.basecomponents.view.ViewInputEditText
         android:id="@+id/signup_repeat_password_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacer_16"
         android:layout_marginTop="@dimen/spacer_8"
         android:hint="@string/repeat_password"
         android:inputType="textPassword"
@@ -51,6 +70,7 @@
         style="@style/mainButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacer_16"
         android:layout_marginTop="@dimen/spacer_16"
         android:text="@string/action_signup"
         app:layout_constraintEnd_toEndOf="parent"

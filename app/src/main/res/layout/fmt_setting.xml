@@ -21,7 +21,7 @@
         android:id="@+id/settings_name"
         style="@style/mainText"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/settings_item_h"
+        android:layout_height="@dimen/text_with_left_row_item_h"
         android:layout_marginTop="@dimen/spacer_8"
         android:background="?attr/selectableItemBackground"
         android:drawableEnd="@drawable/ic_arrow_right_24"
@@ -36,7 +36,7 @@
         android:id="@+id/settings_email"
         style="@style/mainText"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/settings_item_h"
+        android:layout_height="@dimen/text_with_left_row_item_h"
         android:layout_marginTop="@dimen/spacer_4"
         android:background="?attr/selectableItemBackground"
         android:drawableEnd="@drawable/ic_arrow_right_24"
@@ -48,11 +48,11 @@
         tools:text="test@gmail.com" />
 
     <TextView
-        android:id="@+id/settings_password"
+        android:id="@+id/setting_data_picker"
         style="@style/mainText"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/settings_item_h"
-        android:layout_marginTop="@dimen/spacer_4"
+        android:layout_height="@dimen/text_with_left_row_item_h"
+        android:layout_marginTop="@dimen/spacer_8"
         android:background="?attr/selectableItemBackground"
         android:drawableEnd="@drawable/ic_arrow_right_24"
         android:gravity="center_vertical"
@@ -60,6 +60,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_email"
+        tools:text="12.09.2001" />
+
+    <TextView
+        android:id="@+id/settings_password"
+        style="@style/mainText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_with_left_row_item_h"
+        android:layout_marginTop="@dimen/spacer_4"
+        android:background="?attr/selectableItemBackground"
+        android:drawableEnd="@drawable/ic_arrow_right_24"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/spacer_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting_data_picker"
         tools:text="*********" />
 
     <TextView
@@ -111,8 +126,8 @@
         style="@style/logoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_16"
         android:layout_marginHorizontal="@dimen/spacer_16"
+        android:layout_marginTop="@dimen/text_16"
         android:text="@string/logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

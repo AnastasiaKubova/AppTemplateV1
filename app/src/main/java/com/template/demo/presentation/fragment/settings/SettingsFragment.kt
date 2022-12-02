@@ -16,6 +16,8 @@ import com.template.demo.presentation.dialog.ChangePasswordBottomSheetDialog.Com
 import com.template.demo.presentation.dialog.ConfirmationDialog.Companion.CONFIRM_DIALOG_RESULT_KEY
 import com.template.demo.presentation.dialog.ConfirmationDialog.Companion.CONFIRM_DIALOG_RESULT_POSITIVE_RESULT
 import com.template.demo.presentation.dialog.ConfirmationDialog.Companion.CONFIRM_DIALOG_RESULT_VALUE
+import com.template.demo.presentation.dialog.DataPickerDialog.Companion.DATA_PICKER_DIALOG_RESULT_KEY
+import com.template.demo.presentation.dialog.DataPickerDialog.Companion.DATA_PICKER_DIALOG_RESULT_VALUE
 import com.template.demo.presentation.fragment.base.BaseFragment
 import com.template.demo.presentation.fragment.settings.data.UserDataVO
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -50,8 +52,24 @@ class SettingsFragment: BaseFragment(R.layout.fmt_setting) {
         /* Change email action. */
         handleChangeEmail()
 
+        /* Change change birthday. */
+        handleChangeBirthday()
+
         /* Observe to live data. */
         viewModel.userData.observe(viewLifecycleOwner, ::handleLoadedUserData)
+    }
+
+    /**
+     * Change change birthday.
+     */
+    private fun handleChangeBirthday() {
+        binding.settingDataPicker.setOnClickListener {
+            findNavController().navigate(
+                SettingsFragmentDirections.actionNavigationSettingsFragmentToDataPickerDialog(
+                    R.string.birthday
+                )
+            )
+        }
     }
 
     /**
@@ -117,6 +135,11 @@ class SettingsFragment: BaseFragment(R.layout.fmt_setting) {
      * Handle fragment results.
      */
     private fun handleFragmentResults() {
+
+        /* Handle change user birthday. */
+        setFragmentResultListener(DATA_PICKER_DIALOG_RESULT_KEY) { _, bundle ->
+            viewModel.handleChangeBirthday(bundle.getLong(DATA_PICKER_DIALOG_RESULT_VALUE))
+        }
 
         /* Handle user exit confirmation result. */
         setFragmentResultListener(CONFIRM_DIALOG_RESULT_KEY) { _, bundle ->

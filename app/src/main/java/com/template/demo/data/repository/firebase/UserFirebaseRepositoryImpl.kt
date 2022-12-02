@@ -33,6 +33,7 @@ class UserFirebaseRepositoryImpl(
         newEmail: String?,
         newPassword: String?,
         newName: String?,
+        birthday: Long?
     ): Boolean {
         val user = getUser(email, password) ?: return false
         FirebaseRDBFacade.insert(
@@ -41,7 +42,8 @@ class UserFirebaseRepositoryImpl(
             user.data.copy(
                 email = newEmail ?: user.data.email,
                 name = newName ?: user.data.name,
-                password = newPassword ?: user.data.password
+                password = newPassword ?: user.data.password,
+                birthday =  birthday
             )
         )
         return true

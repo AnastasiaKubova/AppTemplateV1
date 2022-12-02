@@ -55,6 +55,12 @@
         <item name="android:textColor">@color/textTitle</item>
     </style>
 
+    <style name="secondaryText">
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">@color/textTitle</item>
+        <item name="android:drawableTint">@color/primary_dark</item>
+    </style>
+
     <style name="mainButton">
         <item name="android:textSize">@dimen/text_16</item>
         <item name="android:textColor">@color/white</item>

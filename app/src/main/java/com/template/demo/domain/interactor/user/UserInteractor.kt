@@ -41,7 +41,8 @@ interface UserInteractor {
     suspend fun updateUserData(
         newEmail: String? = null,
         newPassword: String? = null,
-        newName: String? = null
+        newName: String? = null,
+        birthday: Long? = null
     ): Boolean
 
     /**

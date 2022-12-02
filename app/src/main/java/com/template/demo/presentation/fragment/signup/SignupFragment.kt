@@ -22,6 +22,11 @@ class SignupFragment: BaseFragment(R.layout.fmt_signup) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
 
+            /* Handle select data action. */
+            signupDataPicker.setOnClickListener {
+                findNavController().navigate(SignupFragmentDirections.actionNavigationSignupFragmentToDataPickerDialog(R.string.birthday))
+            }
+
             /* Handle register button click. */
             signupButton.setOnClickListener { handleRegisterClick() }
         }

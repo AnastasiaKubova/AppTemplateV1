@@ -56,39 +56,41 @@ class SettingsViewModel(
      * Handle changing user name.
      */
     fun handleChangeName(newName: String?) {
-        viewModelScope.launch {
-            runCatching {
-                userInteractor.updateUserData(newName = newName)
-            }.onSuccess {
-                showMessage(R.string.message_data_successfully_updated)
-            }.onFailure {
-                showMessage(R.string.message_error_data_failed_updated)
-            }
-        }
+        updateUserData(newName = newName)
     }
 
     /**
      * Handle changing user email.
      */
     fun handleChangeEmail(newEmail: String?) {
-        viewModelScope.launch {
-            runCatching {
-                userInteractor.updateUserData(newEmail = newEmail)
-            }.onSuccess {
-                showMessage(R.string.message_data_successfully_updated)
-            }.onFailure {
-                showMessage(R.string.message_error_data_failed_updated)
-            }
-        }
+        updateUserData(newEmail = newEmail)
     }
 
     /**
      * Handle changing user password.
      */
     fun handleChangePassword(newPassword: String?) {
+        updateUserData(newPassword = newPassword)
+    }
+
+    fun handleChangeBirthday(birthday: Long) {
+        updateUserData(birthday = birthday)
+    }
+
+    private fun updateUserData(
+        newEmail: String? = null,
+        newPassword: String? = null,
+        newName: String? = null,
+        birthday: Long? = null,
+    ) {
         viewModelScope.launch {
             runCatching {
-                userInteractor.updateUserData(newPassword = newPassword)
+                userInteractor.updateUserData(
+                    newEmail =  newEmail,
+                    newPassword = newPassword,
+                    newName = newName,
+                    birthday = birthday,
+                )
             }.onSuccess {
                 showMessage(R.string.message_data_successfully_updated)
             }.onFailure {

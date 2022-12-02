@@ -39,5 +39,6 @@ interface UserFirebaseRepository {
         newEmail: String? = null,
         newPassword: String? = null,
         newName: String? = null,
+        birthday: Long? = null
     ): Boolean
 }
