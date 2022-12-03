@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.template.basecomponents.delegates.viewBinding
-import com.template.basecomponents.utils.allTruth
+import com.template.utils.allTruth
 import com.template.basecomponents.view.isEditTextValid
 import com.template.demo.R
 import com.template.demo.databinding.FmtLoginBinding

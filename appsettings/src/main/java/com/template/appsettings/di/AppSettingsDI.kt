@@ -1,7 +1,5 @@
 package com.template.appsettings.di
 
-import com.template.appsettings.AppSettingsHandler
-import com.template.appsettings.AppSettingsHandlerImpl
 import com.template.appsettings.preference.SettingsPreferenceRepository
 import com.template.appsettings.preference.SettingsPreferenceRepositoryImpl
 import com.template.appsettings.repository.SettingsRepository
@@ -18,11 +16,6 @@ object AppSettingsDI {
         factoryOf(::SettingsPreferenceRepositoryImpl) {
             named("SettingsPreferenceRepositoryImpl")
             bind<SettingsPreferenceRepository>()
-            createdAtStart()
-        }
-        factoryOf(::AppSettingsHandlerImpl) {
-            named("AppSettingsHandlerImpl")
-            bind<AppSettingsHandler>()
             createdAtStart()
         }
         factoryOf(::SettingsRepositoryImpl) {

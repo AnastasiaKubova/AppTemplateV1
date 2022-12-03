@@ -1,4 +1,4 @@
-package com.template.basecomponents.utils
+package com.template.utils
 
 inline fun allTruth(params1: Boolean, params2: Boolean, result: (Boolean) -> Unit) {
     result(params1 && params2)
