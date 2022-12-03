@@ -7,7 +7,7 @@ import com.template.appsettings.data.ThemeType
 import com.template.demo.R
 import com.template.demo.domain.data.UserModel
 import com.template.demo.domain.interactor.user.UserInteractor
-import com.template.demo.domain.repository.SettingsRepository
+import com.template.appsettings.repository.SettingsRepository
 import com.template.demo.presentation.fragment.base.BaseViewModel
 import com.template.demo.presentation.fragment.settings.data.UserSettingsVO
 import kotlinx.coroutines.launch

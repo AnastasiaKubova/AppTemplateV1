@@ -1,13 +1,6 @@
 package com.template.demo.cache.preference
 
-import com.template.appsettings.data.ThemeType
-
 interface PreferenceRepository {
-
-    /**
-     * Get or set application theme.
-     */
-    var theme: ThemeType
 
     /**
      * Is user authorized in app.

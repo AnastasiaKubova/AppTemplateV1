@@ -11,12 +11,6 @@ class PreferenceRepositoryImpl(
 
     private var sharedPreference: SharedPreferences = context.getSharedPreferences(SHARED_PREFERENCE_NAME, MODE_PRIVATE)
 
-    override var theme: ThemeType
-        get() = ThemeType.values().firstOrNull { it.name == sharedPreference.getString(USER_THEME_KEY, "") } ?: ThemeType.DEFAULT
-        set(value) {
-            sharedPreference.modify { putString(USER_THEME_KEY, value.name) }
-        }
-
     override fun isAuthorized(): Boolean {
         val userData = getUserData()
         return userData.first.isNotEmpty() && userData.second.isNotEmpty()
@@ -43,6 +37,5 @@ class PreferenceRepositoryImpl(
         private const val SHARED_PREFERENCE_NAME = "SHARED_PREFERENCE_NAME"
         private const val USER_EMAIL_KEY = "USER_EMAIL_KEY"
         private const val USER_PASSWORD_KEY = "USER_PASSWORD_KEY"
-        private const val USER_THEME_KEY = "USER_THEME_KEY"
     }
 }

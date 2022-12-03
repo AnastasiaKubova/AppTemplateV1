@@ -1,12 +1,11 @@
-package com.template.demo.data.repository.repository
+package com.template.appsettings.repository
 
 import com.template.appsettings.AppSettingsHandler
 import com.template.appsettings.data.ThemeType
-import com.template.demo.cache.preference.PreferenceRepository
-import com.template.demo.domain.repository.SettingsRepository
+import com.template.appsettings.preference.SettingsPreferenceRepository
 
-class SettingsRepositoryImpl(
-    private val preferences: PreferenceRepository,
+internal class SettingsRepositoryImpl(
+    private val preferences: SettingsPreferenceRepository,
     private val appSettingsHandler: AppSettingsHandler
 ): SettingsRepository {
 

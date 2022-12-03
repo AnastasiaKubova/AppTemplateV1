@@ -2,7 +2,7 @@ package com.template.appsettings
 
 import com.template.appsettings.data.ThemeType
 
-interface AppSettingsHandler {
+internal interface AppSettingsHandler {
 
     fun updateTheme(type: ThemeType)
 }

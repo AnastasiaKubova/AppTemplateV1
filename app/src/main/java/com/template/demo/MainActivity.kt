@@ -1,5 +1,6 @@
 package com.template.demo
 
+import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -11,7 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.snackbar.Snackbar
 import com.template.demo.databinding.ActivityMainBinding
-import com.template.demo.domain.repository.SettingsRepository
+import com.template.appsettings.repository.SettingsRepository
 import com.template.demo.presentation.fragment.data.ErrorVO
 import org.koin.android.ext.android.inject
 

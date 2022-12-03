@@ -10,7 +10,6 @@ import com.template.basecomponents.view.isEditTextValid
 import com.template.basecomponents.view.isEquals
 import com.template.demo.R
 import com.template.demo.databinding.FmtSignupBinding
-import com.template.demo.presentation.dialog.DataPickerDialog
 import com.template.demo.presentation.dialog.DataPickerDialog.Companion.DATA_PICKER_DIALOG_RESULT_KEY
 import com.template.demo.presentation.dialog.DataPickerDialog.Companion.DATA_PICKER_DIALOG_RESULT_VALUE
 import com.template.demo.presentation.fragment.base.BaseFragment
@@ -31,7 +30,7 @@ class SignupFragment: BaseFragment(R.layout.fmt_signup) {
 
             /* Handle select data action. */
             signupDataPicker.setOnClickListener {
-                findNavController().navigate(SignupFragmentDirections.actionNavigationSignupFragmentToDataPickerDialog(R.string.birthday))
+                findNavController().navigate(SignupFragmentDirections.actionNavigationSignupFragmentToDataPickerDialog(R.string.no_birthday))
             }
 
             /* Handle register button click. */

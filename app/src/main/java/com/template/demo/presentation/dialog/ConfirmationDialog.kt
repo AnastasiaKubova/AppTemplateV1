@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 
 /*
@@ -22,12 +23,19 @@ class ConfirmationDialog: DialogFragment() {
             .setTitle(args.confirmTitle)
             .setMessage(args.confirmMessage)
             .setPositiveButton(args.positiveButton) { _, _ ->
-                setResult(CONFIRM_DIALOG_RESULT_POSITIVE_RESULT)
                 dismiss()
+
+                /*
+                 * TODO FIX:
+                 * java.lang.IllegalArgumentException: Navigation action/destination com.template.demo:id/action_navigation_settings_fragment_to_navigation_login_fragment cannot be found from the current destination Destination(com.template.demo:id/navigation_confirmation_dialog) label=ConfirmationDialog.
+                 */
+                findNavController().navigateUp()
+                setResult(CONFIRM_DIALOG_RESULT_POSITIVE_RESULT)
             }
             .setNegativeButton (args.negativeButton) { _, _ ->
-                setResult(CONFIRM_DIALOG_RESULT_NEGATIVE_RESULT)
                 dismiss()
+                findNavController().navigateUp()
+                setResult(CONFIRM_DIALOG_RESULT_NEGATIVE_RESULT)
             }
             .setCancelable(true)
             .create()

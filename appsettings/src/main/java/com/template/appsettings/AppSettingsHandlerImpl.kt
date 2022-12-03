@@ -3,7 +3,7 @@ package com.template.appsettings
 import androidx.appcompat.app.AppCompatDelegate
 import com.template.appsettings.data.ThemeType
 
-class AppSettingsHandlerImpl: AppSettingsHandler {
+internal class AppSettingsHandlerImpl: AppSettingsHandler {
 
     override fun updateTheme(type: ThemeType) {
         AppCompatDelegate.setDefaultNightMode(

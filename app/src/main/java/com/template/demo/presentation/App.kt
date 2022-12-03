@@ -1,8 +1,7 @@
 package com.template.demo.presentation
 
 import android.app.Application
-import com.template.appsettings.AppSettingsHandler
-import com.template.appsettings.AppSettingsHandlerImpl
+import com.template.appsettings.di.AppSettingsDI
 import com.template.demo.cache.database.DatabaseRepository
 import com.template.demo.cache.database.DatabaseRepositoryImpl
 import com.template.demo.cache.preference.PreferenceRepository
@@ -11,11 +10,9 @@ import com.template.basecomponents.converters.FbConverter
 import com.template.demo.data.converter.FbUserConvert
 import com.template.demo.data.repository.firebase.UserFirebaseRepositoryImpl
 import com.template.demo.data.repository.firebase.data.FbUserData
-import com.template.demo.data.repository.repository.SettingsRepositoryImpl
 import com.template.demo.domain.data.UserModel
 import com.template.demo.domain.interactor.user.UserInteractor
 import com.template.demo.domain.interactor.user.UserInteractorImpl
-import com.template.demo.domain.repository.SettingsRepository
 import com.template.demo.domain.repository.UserFirebaseRepository
 import com.template.demo.presentation.fragment.home.MainViewModel
 import com.template.demo.presentation.fragment.login.LoginViewModel
@@ -46,49 +43,42 @@ class App: Application() {
             androidContext(this@App)
 
             // Load modules
-            modules(module {
-                singleOf(::PreferenceRepositoryImpl) {
-                    named("PreferenceRepositoryImpl")
-                    bind<PreferenceRepository>()
-                    createdAtStart()
-                }
-                singleOf(::DatabaseRepositoryImpl) {
-                    named("DatabaseRepositoryImpl")
-                    bind<DatabaseRepository>()
-                    createdAtStart()
-                }
-
-                factoryOf(::UserInteractorImpl) {
-                    named("UserInteractorImpl")
-                    bind<UserInteractor>()
-                    createdAtStart()
-                }
-                factoryOf(::FbUserConvert) {
-                    named("FbUserConvert")
-                    bind<FbConverter<FbUserData, UserModel>>()
-                    createdAtStart()
-                }
-                factoryOf(::UserFirebaseRepositoryImpl) {
-                    named("UserFirebaseRepository")
-                    bind<UserFirebaseRepository>()
-                    createdAtStart()
-                }
-                factoryOf(::AppSettingsHandlerImpl) {
-                    named("AppSettingsHandlerImpl")
-                    bind<AppSettingsHandler>()
-                    createdAtStart()
-                }
-                factoryOf(::SettingsRepositoryImpl) {
-                    named("SettingsRepositoryImpl")
-                    bind<SettingsRepository>()
-                    createdAtStart()
-                }
-
-                viewModelOf(::SignupViewModel)
-                viewModelOf(::SettingsViewModel)
-                viewModelOf(::LoginViewModel)
-                viewModelOf(::MainViewModel)
-            })
+            modules(listOf(applyRules(), AppSettingsDI.applyRules()))
         }
+    }
+
+    private fun applyRules() = module {
+        singleOf(::PreferenceRepositoryImpl) {
+            named("PreferenceRepositoryImpl")
+            bind<PreferenceRepository>()
+            createdAtStart()
+        }
+        singleOf(::DatabaseRepositoryImpl) {
+            named("DatabaseRepositoryImpl")
+            bind<DatabaseRepository>()
+            createdAtStart()
+        }
+
+        factoryOf(::UserInteractorImpl) {
+            named("UserInteractorImpl")
+            bind<UserInteractor>()
+            createdAtStart()
+        }
+        factoryOf(::FbUserConvert) {
+            named("FbUserConvert")
+            bind<FbConverter<FbUserData, UserModel>>()
+            createdAtStart()
+        }
+        factoryOf(::UserFirebaseRepositoryImpl) {
+            named("UserFirebaseRepository")
+            bind<UserFirebaseRepository>()
+            createdAtStart()
+        }
+
+
+        viewModelOf(::SignupViewModel)
+        viewModelOf(::SettingsViewModel)
+        viewModelOf(::LoginViewModel)
+        viewModelOf(::MainViewModel)
     }
 }

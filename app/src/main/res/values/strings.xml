@@ -13,7 +13,7 @@
     <string name="repeat_password">Повторите пароль</string>
     <string name="name">Имя</string>
     <string name="logout">Выход</string>
-    <string name="birthday">Дата рождения</string>
+    <string name="no_birthday">Выбрать дату рождения</string>
 
     <string name="action_login">Войти</string>
     <string name="action_signup">Зарегистрироваться?</string>

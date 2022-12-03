@@ -3,7 +3,6 @@ package com.template.demo.presentation.fragment.settings
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
-import androidx.core.view.isVisible
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.template.basecomponents.delegates.viewBinding
@@ -55,7 +54,7 @@ class SettingsFragment: BaseFragment(R.layout.fmt_setting) {
         binding.settingDataPicker.setOnClickListener {
             findNavController().navigate(
                 SettingsFragmentDirections.actionNavigationSettingsFragmentToDataPickerDialog(
-                    R.string.birthday,
+                    R.string.no_birthday,
                     viewModel.userData.value?.birthday ?: DEFAULT_TARGET_DATE_VALUE
                 )
             )
@@ -146,6 +145,8 @@ class SettingsFragment: BaseFragment(R.layout.fmt_setting) {
         setFragmentResultListener(CONFIRM_DIALOG_RESULT_KEY) { _, bundle ->
             if(bundle.getString(CONFIRM_DIALOG_RESULT_VALUE) == CONFIRM_DIALOG_RESULT_POSITIVE_RESULT) {
                 viewModel.clearUserLoginData()
+
+
                 findNavController().navigate(SettingsFragmentDirections.actionNavigationSettingsFragmentToNavigationLoginFragment())
             }
         }
@@ -174,8 +175,7 @@ class SettingsFragment: BaseFragment(R.layout.fmt_setting) {
             settingsName.text = data.name
             settingsEmail.text = data.email
             settingsPassword.text = data.password
-            settingDataPicker.isVisible = data.birthday != null
-            settingDataPicker.text = data.birthday?.toTimeFormat()
+            settingDataPicker.text = data.birthday?.toTimeFormat() ?: getString(R.string.no_birthday)
             (settingsThemeGroup.getChildAt(data.themeType.tag) as RadioButton).isChecked = true
         }
 

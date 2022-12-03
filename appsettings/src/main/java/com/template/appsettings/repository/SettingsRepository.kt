@@ -1,4 +1,4 @@
-package com.template.demo.domain.repository
+package com.template.appsettings.repository
 
 import com.template.appsettings.data.ThemeType
 
