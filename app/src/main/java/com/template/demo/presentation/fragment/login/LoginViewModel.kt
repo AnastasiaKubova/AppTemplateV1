@@ -15,6 +15,12 @@ class LoginViewModel(
     /**
      * Follow that user is authorized in app or not.
      */
+    private val shouldRedirectAuthorizationUserInternal: MutableLiveData<Boolean> = MutableLiveData()
+    val shouldRedirectAuthorizationUser: LiveData<Boolean> = shouldRedirectAuthorizationUserInternal
+
+    /**
+     * Follow that user was authorized in app.
+     */
     private val isAuthorizedUserInternal: MutableLiveData<Boolean?> = MutableLiveData(null)
     val isAuthorizedUser: LiveData<Boolean?> = isAuthorizedUserInternal
 
@@ -45,7 +51,7 @@ class LoginViewModel(
                 userInteractor.isAuthorized()
             }.onSuccess {
                 handleRequestSuccess()
-                isAuthorizedUserInternal.value = it
+                shouldRedirectAuthorizationUserInternal.value = it
             }.onFailure {
                 showMessage(R.string.error_base_message)
             }

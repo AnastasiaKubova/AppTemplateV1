@@ -37,6 +37,7 @@ class LoginFragment: BaseFragment(R.layout.fmt_login) {
 
         /* Observe to live data. */
         viewModel.isAuthorizedUser.observe(viewLifecycleOwner, ::handleUserAuthorizationResult)
+        viewModel.shouldRedirectAuthorizationUser.observe(viewLifecycleOwner, ::handleRedirectAuthorizationUser)
     }
     /**
      * Handle login button. Verify user's data and try to login in to account.
@@ -60,12 +61,24 @@ class LoginFragment: BaseFragment(R.layout.fmt_login) {
     }
 
     /**
+     * Handle user redirection if he already authorization.
+     */
+    private fun handleRedirectAuthorizationUser(isAuthorized: Boolean) {
+        if (isAuthorized) {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToNavigationHome())
+        }
+    }
+
+    /**
      * Handle user authorization result.
      */
     private fun handleUserAuthorizationResult(isAuthorized: Boolean?) {
         isAuthorized ?: return
-        if (isAuthorized) {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToNavigationHome())
+        with(binding) {
+            val errorMessage = if (!isAuthorized) R.string.error_when_login else null
+            loginEmailLayout.showOrHideError(errorMessage)
+            loginPasswordLayout.showOrHideError(errorMessage)
         }
+        handleRedirectAuthorizationUser(isAuthorized)
     }
 }
