@@ -5,9 +5,9 @@ import com.template.appsettings.data.ThemeType
 interface PreferenceRepository {
 
     /**
-     * Get application theme.
+     * Get or set application theme.
      */
-    fun getTheme(): com.template.appsettings.data.ThemeType
+    var theme: ThemeType
 
     /**
      * Is user authorized in app.

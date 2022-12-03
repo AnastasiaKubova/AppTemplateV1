@@ -15,11 +15,8 @@ class UserFirebaseRepositoryImpl(
         return loadUserData(email, password) != null
     }
 
-    override suspend fun registerUser(email: String, password: String, name: String): Boolean {
-        FirebaseRDBFacade.insert(
-            FbUserData.TABLE_NAME,
-            FbUserData(name, email, password)
-        )
+    override suspend fun registerUser(email: String, password: String, name: String, birthday: Long?): Boolean {
+        FirebaseRDBFacade.insert(FbUserData.TABLE_NAME, FbUserData(name, email, password, birthday))
         return true
     }
 

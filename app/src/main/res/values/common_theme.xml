@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="singleRipple">
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="iconBrand">
+        <item name="android:tint">?attr/primary_dark</item>
+    </style>
+
+    <style name="iconGreen">
+        <item name="android:tint">@color/green_0</item>
+    </style>
+
+    <style name="mainText">
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">?attr/textMain</item>
+        <item name="android:drawableTint">?attr/iconTextHint</item>
+    </style>
+
+    <style name="errorText">
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">?attr/textError</item>
+    </style>
+
+    <style name="titleText">
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">?attr/textTitle</item>
+    </style>
+
+    <style name="secondaryText">
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">?attr/primary_dark</item>
+        <item name="android:drawableTint">?attr/primary_dark</item>
+    </style>
+
+    <style name="mainButton">
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">?attr/textMainButton</item>
+        <item name="android:background">@drawable/bg_main_button</item>
+    </style>
+
+    <style name="secondaryButton" parent="mainButton">
+        <item name="android:textColor">?attr/primary_dark</item>
+        <item name="android:background">@drawable/bg_secondary_button</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="logoutButton" parent="secondaryButton">
+        <item name="android:textColor">?attr/buttonLogoutText</item>
+    </style>
+
+    <style name="mainEditInputText" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    </style>
+
+    <style name="editText">
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">?attr/textMain</item>
+        <item name="android:textColorHint">?attr/textHint</item>
+    </style>
+
+    <style name="backgroundView">
+        <item name="android:background">?attr/backgroundWindows</item>
+    </style>
+
+    <!-- Start bottom sheet dialog style.  -->
+    <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+    </style>
+
+    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
+    </style>
+
+    <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/corner_radius_8</item>
+        <item name="cornerSizeTopLeft">@dimen/corner_radius_8</item>
+        <item name="cornerSizeBottomRight">@dimen/corner_no_radius</item>
+        <item name="cornerSizeBottomLeft">@dimen/corner_no_radius</item>
+    </style>
+    <!-- End bottom sheet dialog style.  -->
+</resources>

@@ -35,7 +35,7 @@ class SignupViewModel(
         viewModelScope.launch {
             runCatching {
                 handleLoading(true)
-                userInteractor.registerUser(email, password, name)
+                userInteractor.registerUser(email, password, name, birthdayInternal.value)
             }.onSuccess {
                 handleRequestSuccess()
                 isUserRegisteredInternal.value = it

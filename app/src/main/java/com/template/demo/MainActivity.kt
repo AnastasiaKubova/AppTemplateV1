@@ -11,13 +11,22 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.snackbar.Snackbar
 import com.template.demo.databinding.ActivityMainBinding
+import com.template.demo.domain.repository.SettingsRepository
 import com.template.demo.presentation.fragment.data.ErrorVO
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
+
+    private val settingsRepository by inject<SettingsRepository>()
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home_fragment))
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        settingsRepository.applySavedTheme()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

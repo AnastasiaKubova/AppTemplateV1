@@ -3,16 +3,38 @@
     <style name="Theme.Demo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary_light</item>
-        <item name="colorPrimaryVariant">@color/primary_dark</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/gray_4</item>
+        <item name="colorPrimaryVariant">@color/black_1</item>
+        <item name="colorOnPrimary">@color/white_1</item>
 
         <!-- Secondary brand color. -->
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/gray_4</item>
+        <item name="colorOnSecondary">@color/white_1</item>
+        <item name="colorSecondaryVariant">@color/gray_4</item>
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
+
         <!-- Customize your theme here. -->
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
+
+        <!-- System ripple. -->
+        <item name="colorControlHighlight">@color/gray_5</item>
+
+        <item name="textTitle">@color/white_2</item>
+        <item name="textMain">@color/white_1</item>
+        <item name="textError">@color/red_0</item>
+        <item name="textHint">@color/gray_2</item>
+        <item name="buttonBackground">@color/brown_1</item>
+        <item name="editTextBorderBackground">@color/brown_1</item>
+        <item name="buttonLogoutText">@color/red_0</item>
+        <item name="ripple">@color/gray_5</item>
+        <item name="primary_dark">@color/black_1</item>
+        <item name="textMainButton">@color/white_1</item>
+        <item name="backgroundWindows">@color/gray_4</item>
+        <item name="iconTextHint">@color/white_1</item>
     </style>
 </resources>

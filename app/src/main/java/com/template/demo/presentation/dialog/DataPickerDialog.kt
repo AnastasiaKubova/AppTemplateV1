@@ -19,7 +19,7 @@ class DataPickerDialog: DialogFragment() {
         super.onResume()
         MaterialDatePicker.Builder.datePicker()
             .setInputMode(MaterialDatePicker.INPUT_MODE_CALENDAR)
-            .setSelection(args.targetDate?.toLong() ?: Calendar.getInstance().timeInMillis)
+            .setSelection(if (args.targetDate == DEFAULT_TARGET_DATE_VALUE) Calendar.getInstance().timeInMillis else args.targetDate)
             .setTitleText(args.dialogTitle)
             .build()
             .apply {
@@ -41,6 +41,7 @@ class DataPickerDialog: DialogFragment() {
 
     companion object {
         private const val TAG = "DataPickerDialog"
+        const val DEFAULT_TARGET_DATE_VALUE = -1L
         const val DATA_PICKER_DIALOG_RESULT_KEY = "DATA_PICKER_DIALOG_RESULT_KEY"
         const val DATA_PICKER_DIALOG_RESULT_VALUE = "DATA_PICKER_DIALOG_RESULT_VALUE"
     }

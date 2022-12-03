@@ -69,7 +69,7 @@ class SignupFragment: BaseFragment(R.layout.fmt_signup) {
             viewModel.tryRegisterUser(
                 signupEmail.text.trim(),
                 signupPassword.text.trim(),
-                signupName.text.trim()
+                signupName.text.trim(),
             )
         }
     }

@@ -11,9 +11,11 @@ import com.template.basecomponents.converters.FbConverter
 import com.template.demo.data.converter.FbUserConvert
 import com.template.demo.data.repository.firebase.UserFirebaseRepositoryImpl
 import com.template.demo.data.repository.firebase.data.FbUserData
+import com.template.demo.data.repository.repository.SettingsRepositoryImpl
 import com.template.demo.domain.data.UserModel
 import com.template.demo.domain.interactor.user.UserInteractor
 import com.template.demo.domain.interactor.user.UserInteractorImpl
+import com.template.demo.domain.repository.SettingsRepository
 import com.template.demo.domain.repository.UserFirebaseRepository
 import com.template.demo.presentation.fragment.home.MainViewModel
 import com.template.demo.presentation.fragment.login.LoginViewModel
@@ -76,7 +78,11 @@ class App: Application() {
                     bind<AppSettingsHandler>()
                     createdAtStart()
                 }
-
+                factoryOf(::SettingsRepositoryImpl) {
+                    named("SettingsRepositoryImpl")
+                    bind<SettingsRepository>()
+                    createdAtStart()
+                }
 
                 viewModelOf(::SignupViewModel)
                 viewModelOf(::SettingsViewModel)

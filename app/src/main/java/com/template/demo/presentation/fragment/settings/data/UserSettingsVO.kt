@@ -5,9 +5,10 @@ import com.template.appsettings.data.ThemeType
 /**
  * Data with information for settings screen.
  */
-data class UserDataVO(
+data class UserSettingsVO(
     val name: String,
     val email: String,
     val password: String,
-    val themeType: com.template.appsettings.data.ThemeType
+    val birthday: Long?,
+    val themeType: ThemeType
 )

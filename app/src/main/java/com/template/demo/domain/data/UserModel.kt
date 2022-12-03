@@ -10,7 +10,6 @@ import java.util.Calendar
  * @property email user's email.
  * @property password user's password.
  * @property birthday user's birthday.
- * @property theme application theme.
  */
 data class UserModel(
     val id: String,
@@ -18,5 +17,4 @@ data class UserModel(
     val email: String,
     val password: String,
     val birthday: Calendar?,
-    val theme: com.template.appsettings.data.ThemeType,
 )

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="iconTextHint" format="reference"/>
+    <attr name="backgroundWindows" format="reference"/>
+    <attr name="textMainButton" format="reference"/>
+    <attr name="textTitle" format="reference"/>
+    <attr name="textMain" format="reference"/>
+    <attr name="textError" format="reference"/>
+    <attr name="textHint" format="reference"/>
+    <attr name="buttonBackground" format="reference"/>
+    <attr name="editTextBorderBackground" format="reference"/>
+    <attr name="buttonLogoutText" format="reference"/>
+    <attr name="ripple" format="reference"/>
+    <attr name="primary_dark" format="reference"/>
+</resources>

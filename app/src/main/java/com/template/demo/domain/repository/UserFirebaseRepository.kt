@@ -18,11 +18,13 @@ interface UserFirebaseRepository {
      * @param email email of user.
      * @param password password of user.
      * @param name name of user.
+     * @param birthday birthday of user.
      */
     suspend fun registerUser(
         email: String,
         password: String,
         name: String,
+        birthday: Long?
     ): Boolean
 
     /**

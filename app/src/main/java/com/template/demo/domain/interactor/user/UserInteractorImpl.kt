@@ -18,8 +18,8 @@ class UserInteractorImpl(
         }
     }
 
-    override suspend fun registerUser(email: String, password: String, name: String) = withContext(Dispatchers.IO) {
-        userRepository.registerUser(email, password, name).also {
+    override suspend fun registerUser(email: String, password: String, name: String, birthday: Long?) = withContext(Dispatchers.IO) {
+        userRepository.registerUser(email, password, name, birthday).also {
             if (it) {
                 preferenceRepository.saveUserData(email, password)
             }
@@ -37,7 +37,11 @@ class UserInteractorImpl(
 
     override suspend fun updateUserData(newEmail: String?, newPassword: String?, newName: String?,  birthday: Long?) = withContext(Dispatchers.IO) {
         val (email, password) = preferenceRepository.getUserData()
-        userRepository.updateUserData(email, password, newEmail, newPassword, newName, birthday)
+        userRepository.updateUserData(email, password, newEmail, newPassword, newName, birthday).also {
+            if (it) {
+                preferenceRepository.saveUserData(newEmail ?: email, newPassword ?: password)
+            }
+        }
     }
 
     override fun clearData() {

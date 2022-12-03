@@ -23,4 +23,4 @@ fun Long.toTimeFormat(): String {
     return DateFormat.format(TIME_FORMAT_DD_MM_YYYY, Date(this)).toString()
 }
 
-private const val TIME_FORMAT_DD_MM_YYYY = "MM.dd.yyyy"
+private const val TIME_FORMAT_DD_MM_YYYY = "dd MMMM yyyy"

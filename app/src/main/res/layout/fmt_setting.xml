@@ -71,6 +71,7 @@
         android:background="?attr/selectableItemBackground"
         android:drawableEnd="@drawable/ic_arrow_right_24"
         android:gravity="center_vertical"
+        android:inputType="textPassword"
         android:paddingHorizontal="@dimen/spacer_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,8 +105,7 @@
             android:id="@+id/settings_theme_default_radio_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/settings_theme_default" />
+            android:text="@string/settings_theme_default"/>
 
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/settings_theme_light_radio_button"

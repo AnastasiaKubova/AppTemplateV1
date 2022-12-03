@@ -2,6 +2,8 @@ package com.template.demo.presentation.fragment.settings
 
 import android.os.Bundle
 import android.view.View
+import android.widget.RadioButton
+import androidx.core.view.isVisible
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.template.basecomponents.delegates.viewBinding
@@ -18,8 +20,10 @@ import com.template.demo.presentation.dialog.ConfirmationDialog.Companion.CONFIR
 import com.template.demo.presentation.dialog.ConfirmationDialog.Companion.CONFIRM_DIALOG_RESULT_VALUE
 import com.template.demo.presentation.dialog.DataPickerDialog.Companion.DATA_PICKER_DIALOG_RESULT_KEY
 import com.template.demo.presentation.dialog.DataPickerDialog.Companion.DATA_PICKER_DIALOG_RESULT_VALUE
+import com.template.demo.presentation.dialog.DataPickerDialog.Companion.DEFAULT_TARGET_DATE_VALUE
 import com.template.demo.presentation.fragment.base.BaseFragment
-import com.template.demo.presentation.fragment.settings.data.UserDataVO
+import com.template.demo.presentation.fragment.settings.data.UserSettingsVO
+import com.template.utils.toTimeFormat
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment: BaseFragment(R.layout.fmt_setting) {
@@ -40,21 +44,6 @@ class SettingsFragment: BaseFragment(R.layout.fmt_setting) {
         super.onViewCreated(view, savedInstanceState)
         handleFragmentResults()
 
-        /* Handle exit action. */
-        handleExitClick()
-
-        /* Change user name action. */
-        handleChangeName()
-
-        /* Change password action. */
-        handleChangePassword()
-
-        /* Change email action. */
-        handleChangeEmail()
-
-        /* Change change birthday. */
-        handleChangeBirthday()
-
         /* Observe to live data. */
         viewModel.userData.observe(viewLifecycleOwner, ::handleLoadedUserData)
     }
@@ -66,7 +55,8 @@ class SettingsFragment: BaseFragment(R.layout.fmt_setting) {
         binding.settingDataPicker.setOnClickListener {
             findNavController().navigate(
                 SettingsFragmentDirections.actionNavigationSettingsFragmentToDataPickerDialog(
-                    R.string.birthday
+                    R.string.birthday,
+                    viewModel.userData.value?.birthday ?: DEFAULT_TARGET_DATE_VALUE
                 )
             )
         }
@@ -132,6 +122,17 @@ class SettingsFragment: BaseFragment(R.layout.fmt_setting) {
     }
 
     /**
+     * Handle change theme action.
+     */
+    private fun handleTheme() {
+        with(binding) {
+            settingsThemeGroup.setOnCheckedChangeListener { group, checkedId ->
+                viewModel.handleChangeTheme(group.indexOfChild(group.findViewById<RadioButton>(checkedId)))
+            }
+        }
+    }
+
+    /**
      * Handle fragment results.
      */
     private fun handleFragmentResults() {
@@ -145,7 +146,7 @@ class SettingsFragment: BaseFragment(R.layout.fmt_setting) {
         setFragmentResultListener(CONFIRM_DIALOG_RESULT_KEY) { _, bundle ->
             if(bundle.getString(CONFIRM_DIALOG_RESULT_VALUE) == CONFIRM_DIALOG_RESULT_POSITIVE_RESULT) {
                 viewModel.clearUserLoginData()
-                findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToLoginFragment())
+                findNavController().navigate(SettingsFragmentDirections.actionNavigationSettingsFragmentToNavigationLoginFragment())
             }
         }
 
@@ -168,11 +169,32 @@ class SettingsFragment: BaseFragment(R.layout.fmt_setting) {
     /**
      * Handle loaded data for showing in settings.
      */
-    private fun handleLoadedUserData(data: UserDataVO) {
+    private fun handleLoadedUserData(data: UserSettingsVO) {
         with(binding) {
             settingsName.text = data.name
             settingsEmail.text = data.email
             settingsPassword.text = data.password
+            settingDataPicker.isVisible = data.birthday != null
+            settingDataPicker.text = data.birthday?.toTimeFormat()
+            (settingsThemeGroup.getChildAt(data.themeType.tag) as RadioButton).isChecked = true
         }
+
+        /* Handle exit action. */
+        handleExitClick()
+
+        /* Change user name action. */
+        handleChangeName()
+
+        /* Change password action. */
+        handleChangePassword()
+
+        /* Change email action. */
+        handleChangeEmail()
+
+        /* Change birthday action. */
+        handleChangeBirthday()
+
+        /* Change theme. */
+        handleTheme()
     }
 }
